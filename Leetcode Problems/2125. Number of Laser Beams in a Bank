@@ -3,6 +3,7 @@ private:
     int pre_rowCount(vector<string>& bank,int row,int col,int i){
    int candle=0;
     for(int j=0;j<col;j++){
+
         if(bank[i][j] == '1'){
             candle++;
         }
