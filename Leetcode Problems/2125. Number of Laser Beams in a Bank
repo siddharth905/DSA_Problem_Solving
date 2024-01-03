@@ -1,0 +1,72 @@
+class Solution {
+private:
+    int pre_rowCount(vector<string>& bank,int row,int col,int i){
+   int candle=0;
+    for(int j=0;j<col;j++){
+        if(bank[i][j] == '1'){
+            candle++;
+        }
+       
+    }
+     return candle;
+}
+
+int next_rowCount(vector<string>& bank,int row,int col,int i){
+   int candle=0;
+    for(int j=0;j<col;j++){
+        if(bank[i][j] == '1'){
+            candle++;
+        }
+       
+    }
+     return candle;
+}
+public:
+
+
+    int numberOfBeams(vector<string>& bank) {
+       /* int row = bank.size();
+        int col=bank[0].size();
+       // int count=0;
+        int total_laser_beam=0;
+        for(int count=0;count < row-1; count++){     //142/147 testcases pass
+
+            int pre_Row=pre_rowCount(bank,row,col,count);
+            int next_Row=next_rowCount(bank,row,col,count + 1);
+            cout<< pre_Row<<next_Row;
+            cout<<endl;
+            int check=count + 1;
+            if(next_Row == 0 && check+1 < row){
+                 next_Row=next_rowCount(bank,row,col,check + 1);
+            }
+            total_laser_beam=total_laser_beam + (pre_Row * next_Row);
+        }
+        return total_laser_beam;
+        */
+        vector<int>v;
+       
+        int total_laser_beam=0; 
+        for(auto a: bank){
+            string s=a;
+             int cnt=0;
+            for(auto x:s){
+                if(x == '1'){
+                    cnt++;
+                }
+            }
+            if(cnt != 0){
+                v.push_back(cnt);
+            }
+        }
+        // for(int i=0;i<v.size();i++){
+        //     cout<<v[i];
+        //       //total_laser_beam=total_laser_beam + (v[i] * v[i-1]);
+        // }
+
+        for(int i=1;i<v.size();i++){
+
+              total_laser_beam=total_laser_beam + (v[i] * v[i-1]);
+        }
+      return total_laser_beam;
+    }
+};
