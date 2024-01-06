@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int buyChoco(vector<int>& prices, int money) {
+        sort(prices.begin(),prices.end());
+        int temp_money=money;
+          money=money - prices[0];
+          if(money > 0){
+              money=money - prices[1];
+              if(money >= 0){
+                  return money;
+              }
+              else{
+                  return temp_money;
+              }
+          }
+          else{
+              return temp_money;
+          }
+          return money;
+    }
+};
